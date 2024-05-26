@@ -38,6 +38,7 @@ export const romanize = (num: number) => {
  * Converts a roman number to an arabic number.
  *
  * @param num The roman number to convert.
+ * @throws Error if the roman number is invalid.
  * @returns The arabic number.
  */
 
