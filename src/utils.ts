@@ -42,6 +42,8 @@ export const romanize = (num: number) => {
  */
 
 export const arabicize = (num: string) => {
+    if (!isValidRoman(num)) throw new Error("Invalid roman number");
+
     let romanNum = num;
     let arabicNum = 0;
 

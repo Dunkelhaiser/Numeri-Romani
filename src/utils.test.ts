@@ -37,6 +37,11 @@ describe("roman numbers", () => {
             const result = arabicize(romanNum);
             expect(result).toBe(arabicNum);
         });
+
+        it("throws error for invalid roman number", () => {
+            const invalidRoman = "IIII";
+            expect(() => arabicize(invalidRoman)).toThrow("Invalid roman number");
+        });
     });
 
     describe("checks if string is valid roman number", () => {
