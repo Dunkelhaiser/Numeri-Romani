@@ -16,7 +16,7 @@ const arabicRoman = [
 /**
  * Converts an arabic number to a roman number.
  *
- * @param num The arabic number to convert.
+ * @param num The integer arabic number to convert.
  * @returns The roman number.
  */
 
