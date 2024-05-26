@@ -21,6 +21,8 @@ const arabicRoman = [
  */
 
 export const romanize = (num: number) => {
+    if (!Number.isInteger(num)) throw new Error("Non-integer number");
+
     let arabicNum = num;
     let romanNum = "";
 

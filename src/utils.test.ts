@@ -30,6 +30,10 @@ describe("roman numbers", () => {
             const result = romanize(arabicNum);
             expect(result).toBe(romanNum);
         });
+
+        it("throws error for non-integer numbers", () => {
+            expect(() => romanize(1.5)).toThrow("Non-integer number");
+        });
     });
 
     describe("converts roman numbers to arabic", () => {
