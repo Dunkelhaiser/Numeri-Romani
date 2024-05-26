@@ -1,5 +1,5 @@
 import { it, expect, describe } from "vitest";
-import { arabicize, romanize, type ArabicRoman } from "./utils";
+import { arabicize, isValidRoman, romanize, type ArabicRoman } from "./utils";
 
 describe("roman numbers", () => {
     const tests = [
@@ -36,6 +36,21 @@ describe("roman numbers", () => {
         it.each(tests)("returns right arabic number", (arabicNum, romanNum) => {
             const result = arabicize(romanNum);
             expect(result).toBe(arabicNum);
+        });
+    });
+
+    describe("checks if string is valid roman number", () => {
+        const validInvalid = [
+            ["X", true],
+            ["VII", true],
+            ["MMMMMMMCMLXIV", true],
+            ["IIII", false],
+            ["efs", false],
+            ["XXIXX", false],
+        ] satisfies [string, boolean][];
+        it.each(validInvalid)("returns correct validity boolean", (numString, valid) => {
+            const result = isValidRoman(numString);
+            expect(result).toBe(valid);
         });
     });
 });

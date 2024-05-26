@@ -54,3 +54,14 @@ export const arabicize = (num: string) => {
 
     return arabicNum;
 };
+
+/**
+ * Checks if a string is a valid roman number.
+ *
+ * @param num The string to check.
+ * @returns true or false depending if a string is a valid roman number.
+ */
+
+export const isValidRoman = (num: string) => {
+    return /^\bM*(?<temp1>CM|CD|D?C{0,3})(?<temp2>XC|XL|L?X{0,3})(?<temp3>IX|IV|V?I{0,3})\b$/.test(num);
+};
