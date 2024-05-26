@@ -13,6 +13,13 @@ const arabicRoman = [
     [1, "I"],
 ] satisfies ArabicRoman[];
 
+/**
+ * Converts an arabic number to a roman number.
+ *
+ * @param num The arabic number to convert.
+ * @returns The roman number.
+ */
+
 export const romanize = (num: number) => {
     let arabicNum = num;
     let romanNum = "";
@@ -26,6 +33,13 @@ export const romanize = (num: number) => {
 
     return romanNum;
 };
+
+/**
+ * Converts a roman number to an arabic number.
+ *
+ * @param num The roman number to convert.
+ * @returns The arabic number.
+ */
 
 export const arabicize = (num: string) => {
     let romanNum = num;
