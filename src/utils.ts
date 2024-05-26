@@ -26,3 +26,17 @@ export const romanize = (num: number) => {
 
     return romanNum;
 };
+
+export const arabicize = (num: string) => {
+    let romanNum = num;
+    let arabicNum = 0;
+
+    arabicRoman.forEach(([arabic, roman]) => {
+        while (romanNum.startsWith(roman)) {
+            arabicNum += arabic;
+            romanNum = romanNum.slice(roman.length);
+        }
+    });
+
+    return arabicNum;
+};
