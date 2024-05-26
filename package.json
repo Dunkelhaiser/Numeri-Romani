@@ -2,7 +2,7 @@
     "name": "@dunkelhaiser/numeri-romani",
     "version": "0.0.0",
     "description": "Library for work with Roman numbers.",
-    "private": false,
+    "private": true,
     "keywords": [
         "convert",
         "number",
