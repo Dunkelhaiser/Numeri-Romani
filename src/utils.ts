@@ -22,17 +22,7 @@ const arabicRoman: ArabicRoman[] = [
 
 export const romanNumerals = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
 
-/**
- * Converts an arabic number to a roman number.
- *
- * @param num The integer arabic number to convert.
- * @throws Error if the number is not an integer, is negative, or is larger than 3999.
- * @returns The roman number.
- */
-
-export const romanize = (num: number) => {
-    isValidArabic(num);
-
+const convertToRoman = (num: number) => {
     let arabicNum = num;
     let romanNum = "";
 
@@ -47,6 +37,19 @@ export const romanize = (num: number) => {
 };
 
 /**
+ * Converts an arabic number to a roman number.
+ *
+ * @param num The integer arabic number to convert.
+ * @throws Error if the number is not an integer, is negative, or is larger than 3999.
+ * @returns The roman number.
+ */
+
+export const romanize = (num: number) => {
+    isValidArabic(num);
+    return convertToRoman(num);
+};
+
+/**
  * Converts an arabic number to a roman number, without throwing an error.
  *
  * @param num The integer arabic number to convert.
@@ -55,20 +58,10 @@ export const romanize = (num: number) => {
 
 export const romanizeSafe = (num: number) => {
     if (!isValidArabicSafe(num)) return "";
-    return romanize(num);
+    return convertToRoman(num);
 };
 
-/**
- * Converts a roman number to an arabic number.
- *
- * @param num The roman number to convert.
- * @throws Error if the roman number is invalid.
- * @returns The arabic number.
- */
-
-export const arabicize = (num: string) => {
-    isValidRoman(num);
-
+const convertToArabic = (num: string) => {
     let romanNum = num;
     let arabicNum = 0;
 
@@ -83,6 +76,19 @@ export const arabicize = (num: string) => {
 };
 
 /**
+ * Converts a roman number to an arabic number.
+ *
+ * @param num The roman number to convert.
+ * @throws Error if the roman number is invalid.
+ * @returns The arabic number.
+ */
+
+export const arabicize = (num: string) => {
+    isValidRoman(num);
+    return convertToArabic(num);
+};
+
+/**
  * Converts a roman number to an arabic number, without throwing an error.
  *
  * @param num The roman number to convert.
@@ -91,7 +97,7 @@ export const arabicize = (num: string) => {
 
 export const arabicizeSafe = (num: string) => {
     if (!isValidRomanSafe(num)) return NaN;
-    return arabicize(num);
+    return convertToArabic(num);
 };
 
 /**
