@@ -40,6 +40,14 @@ export class RomanNumber {
     }
 
     /**
+     * @returns Object with roman and arabic values of the RomanNumber instance.
+     */
+
+    public getValues() {
+        return { roman: this.value, arabic: this.numericValue };
+    }
+
+    /**
      * Sets the roman number and arabic number values of the RomanNumber instance.
      * @param value The value to set. Can be either a arabic number or a roman numeral string.
      */

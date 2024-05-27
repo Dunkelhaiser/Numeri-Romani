@@ -25,6 +25,11 @@ describe("RomanNumber class", () => {
         expect(romanNumber.getValue()).toBe("II");
     });
 
+    it("gets the values of the RomanNumber instance", () => {
+        const romanNumber = new RomanNumber(1);
+        expect(romanNumber.getValues()).toEqual({ roman: "I", arabic: 1 });
+    });
+
     describe("operations", () => {
         describe("add", () => {
             it("adds a roman number to the RomanNumber instance", () => {
