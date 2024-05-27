@@ -119,4 +119,37 @@ export class RomanNumber {
             this.value = romanize(tempDiff);
         }
     }
+
+    /**
+     * Multiplies a value from the RomanNumber instance.
+     * @param value The value to multiply. Can be either a arabic number or a roman numeral string.
+     */
+
+    public multiply(value: number | string) {
+        if (typeof value === "number") {
+            if (!Number.isInteger(value)) throw new Error("The value must be an integer");
+            const tempDiff = this.numericValue * value;
+            if (tempDiff > 3999) {
+                throw new Error("The product of the two values exceeds 3999");
+            }
+            if (tempDiff < 1) {
+                throw new Error("The product of the two values is less than 1");
+            }
+
+            this.numericValue = tempDiff;
+            this.value = romanize(tempDiff);
+        } else {
+            isValidRoman(value);
+            const tempDiff = this.numericValue * arabicize(value);
+            if (tempDiff > 3999) {
+                throw new Error("The product of the two values exceeds 3999");
+            }
+            if (tempDiff < 1) {
+                throw new Error("The product of the two values is less than 1");
+            }
+
+            this.numericValue = tempDiff;
+            this.value = romanize(tempDiff);
+        }
+    }
 }

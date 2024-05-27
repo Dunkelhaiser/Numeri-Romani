@@ -76,4 +76,30 @@ describe("RomanNumber class", () => {
             expect(() => romanNumber.subtract(2)).toThrowError("The difference of the two values is less than 1");
         });
     });
+
+    describe("multiply", () => {
+        it("multiplies a roman number to the RomanNumber instance", () => {
+            const romanNumber = new RomanNumber(10);
+            romanNumber.multiply("II");
+            expect(romanNumber.getNumericValue()).toBe(20);
+            expect(romanNumber.getValue()).toBe("XX");
+        });
+
+        it("multiplies a arabic number to the RomanNumber instance", () => {
+            const romanNumber = new RomanNumber(5);
+            romanNumber.multiply(3);
+            expect(romanNumber.getNumericValue()).toBe(15);
+            expect(romanNumber.getValue()).toBe("XV");
+        });
+
+        it("throws an error if the result is greater than 3999", () => {
+            const romanNumber = new RomanNumber(3998);
+            expect(() => romanNumber.multiply(2)).toThrowError("The product of the two values exceeds 3999");
+        });
+
+        it("throws an error if the result is less than 1", () => {
+            const romanNumber = new RomanNumber(1);
+            expect(() => romanNumber.multiply(-1)).toThrowError("The product of the two values is less than 1");
+        });
+    });
 });
