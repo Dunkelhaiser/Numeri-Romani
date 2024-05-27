@@ -102,4 +102,30 @@ describe("RomanNumber class", () => {
             expect(() => romanNumber.multiply(-1)).toThrowError("The product of the two values is less than 1");
         });
     });
+
+    describe("division", () => {
+        it("divides a roman number to the RomanNumber instance", () => {
+            const romanNumber = new RomanNumber(10);
+            romanNumber.divide("II");
+            expect(romanNumber.getNumericValue()).toBe(5);
+            expect(romanNumber.getValue()).toBe("V");
+        });
+
+        it("divides a arabic number to the RomanNumber instance", () => {
+            const romanNumber = new RomanNumber(6);
+            romanNumber.divide(3);
+            expect(romanNumber.getNumericValue()).toBe(2);
+            expect(romanNumber.getValue()).toBe("II");
+        });
+
+        it("throws an error if the result is less than 1", () => {
+            const romanNumber = new RomanNumber(1);
+            expect(() => romanNumber.divide(-1)).toThrowError("The quotient of the two values is less than 1");
+        });
+
+        it("throws an error if the result is not an integer", () => {
+            const romanNumber = new RomanNumber(5);
+            expect(() => romanNumber.divide(2)).toThrowError("The quotient of the two values is not an integer");
+        });
+    });
 });
