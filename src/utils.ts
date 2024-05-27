@@ -18,11 +18,14 @@ const arabicRoman = [
  * Converts an arabic number to a roman number.
  *
  * @param num The integer arabic number to convert.
+ * @throws Error if the number is not an integer or is negative.
  * @returns The roman number.
  */
 
 export const romanize = (num: number) => {
     if (!Number.isInteger(num)) throw new Error("Non-integer number");
+    if (num === 0) throw new Error("Cannot convert zero");
+    if (num < 1) throw new Error("Cannot convert negative numbers");
 
     let arabicNum = num;
     let romanNum = "";

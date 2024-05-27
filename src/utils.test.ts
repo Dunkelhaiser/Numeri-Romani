@@ -35,6 +35,14 @@ describe("roman numbers", () => {
         it("throws error for non-integer numbers", () => {
             expect(() => romanize(1.5)).toThrow("Non-integer number");
         });
+
+        it("throws error for zero", () => {
+            expect(() => romanize(0)).toThrow("Cannot convert zero");
+        });
+
+        it("throws error for negative numbers", () => {
+            expect(() => romanize(-1)).toThrow("Cannot convert negative numbers");
+        });
     });
 
     describe("converts roman numbers to arabic", () => {
