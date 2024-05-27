@@ -1,11 +1,13 @@
 import { it, expect, describe } from "vitest";
 import {
     arabicize,
+    arabicizeSafe,
     isValidArabic,
     isValidArabicSafe,
     isValidRoman,
     isValidRomanSafe,
     romanize,
+    romanizeSafe,
     type ArabicRoman,
 } from "./utils";
 
@@ -41,12 +43,22 @@ describe("roman numbers", () => {
             const result = romanize(arabicNum);
             expect(result).toBe(romanNum);
         });
+
+        it("returns empty string for invalid numbers", () => {
+            const result = romanizeSafe(0);
+            expect(result).toBe("");
+        });
     });
 
     describe("converts roman numbers to arabic", () => {
         it.each(tests)("returns right arabic number", (arabicNum, romanNum) => {
             const result = arabicize(romanNum);
             expect(result).toBe(arabicNum);
+        });
+
+        it("returns NaN for invalid numbers", () => {
+            const result = arabicizeSafe("IIII");
+            expect(result).toBe(NaN);
         });
     });
 

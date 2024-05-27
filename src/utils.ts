@@ -47,6 +47,18 @@ export const romanize = (num: number) => {
 };
 
 /**
+ * Converts an arabic number to a roman number, without throwing an error.
+ *
+ * @param num The integer arabic number to convert.
+ * @returns The roman number, or an empty string if the number is invalid.
+ */
+
+export const romanizeSafe = (num: number) => {
+    if (!isValidArabicSafe(num)) return "";
+    return romanize(num);
+};
+
+/**
  * Converts a roman number to an arabic number.
  *
  * @param num The roman number to convert.
@@ -68,6 +80,18 @@ export const arabicize = (num: string) => {
     });
 
     return arabicNum;
+};
+
+/**
+ * Converts a roman number to an arabic number, without throwing an error.
+ *
+ * @param num The roman number to convert.
+ * @returns The arabic number, or NaN if the number is invalid.
+ */
+
+export const arabicizeSafe = (num: string) => {
+    if (!isValidRomanSafe(num)) return NaN;
+    return arabicize(num);
 };
 
 /**
