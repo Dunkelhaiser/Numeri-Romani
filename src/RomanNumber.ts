@@ -63,7 +63,10 @@ export class RomanNumber {
         }
     }
 
-    private calculateResult(value: number | string, operation: "add" | "subtract" | "multiply" | "divide") {
+    private calculateResult(
+        value: number | string,
+        operation: "add" | "subtract" | "multiply" | "divide" | "exponentiation"
+    ) {
         let tempRes: number;
         let numericValue: number;
 
@@ -81,8 +84,11 @@ export class RomanNumber {
             tempRes = this.numericValue - numericValue;
         } else if (operation === "multiply") {
             tempRes = this.numericValue * numericValue;
-        } else {
+        } else if (operation === "divide") {
             tempRes = this.numericValue / numericValue;
+            if (tempRes % 1 !== 0) throw new Error("The result of the operation is not an integer");
+        } else {
+            tempRes = this.numericValue ** numericValue;
             if (tempRes % 1 !== 0) throw new Error("The result of the operation is not an integer");
         }
 
@@ -128,6 +134,16 @@ export class RomanNumber {
 
     public divide(value: number | string) {
         this.calculateResult(value, "divide");
+        return this;
+    }
+
+    /**
+     * Raises the RomanNumber instance to a power.
+     * @param value The value to raise the RomanNumber instance to. Can be either a arabic number or a roman numeral string.
+     */
+
+    public exponentiation(value: number | string) {
+        this.calculateResult(value, "exponentiation");
         return this;
     }
 }

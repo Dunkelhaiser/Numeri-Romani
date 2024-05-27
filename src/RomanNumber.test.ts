@@ -130,6 +130,34 @@ describe("RomanNumber class", () => {
             });
         });
 
+        describe("exponentiation", () => {
+            it("raises a roman number to the RomanNumber instance", () => {
+                const romanNumber = new RomanNumber(10);
+                romanNumber.exponentiation("II");
+                expect(romanNumber.getNumericValue()).toBe(100);
+                expect(romanNumber.getValue()).toBe("C");
+            });
+
+            it("raises a arabic number to the RomanNumber instance", () => {
+                const romanNumber = new RomanNumber(5);
+                romanNumber.exponentiation(3);
+                expect(romanNumber.getNumericValue()).toBe(125);
+                expect(romanNumber.getValue()).toBe("CXXV");
+            });
+
+            it("throws an error if the result is greater than 3999", () => {
+                const romanNumber = new RomanNumber(100);
+                expect(() => romanNumber.exponentiation(2)).toThrowError("The result of the operation exceeds 3999");
+            });
+
+            it("throws an error if the result is not an integer", () => {
+                const romanNumber = new RomanNumber(5);
+                expect(() => romanNumber.exponentiation(-2)).toThrowError(
+                    "The result of the operation is not an integer"
+                );
+            });
+        });
+
         it("supports method chaining", () => {
             const romanNumber = new RomanNumber(5);
             romanNumber.add(2).subtract(3).multiply(4).divide(8);
