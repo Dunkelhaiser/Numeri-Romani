@@ -63,7 +63,7 @@ export class RomanNumber {
         }
     }
 
-    private calculateResult(value: number | string, operation: "add" | "subtract" | "multiply" | "divide"): number {
+    private calculateResult(value: number | string, operation: "add" | "subtract" | "multiply" | "divide") {
         let tempRes: number;
         let numericValue: number;
 
@@ -83,9 +83,12 @@ export class RomanNumber {
             tempRes = this.numericValue * numericValue;
         } else {
             tempRes = this.numericValue / numericValue;
+            if (tempRes % 1 !== 0) throw new Error("The result of the operation is not an integer");
         }
 
-        return tempRes;
+        this.checkResult(tempRes);
+
+        this.setValue(tempRes);
     }
 
     /**
@@ -94,11 +97,8 @@ export class RomanNumber {
      */
 
     public add(value: number | string) {
-        const tempRes = this.calculateResult(value, "add");
-
-        this.checkResult(tempRes);
-
-        this.setValue(tempRes);
+        this.calculateResult(value, "add");
+        return this;
     }
 
     /**
@@ -107,11 +107,8 @@ export class RomanNumber {
      */
 
     public subtract(value: number | string) {
-        const tempRes = this.calculateResult(value, "subtract");
-
-        this.checkResult(tempRes);
-
-        this.setValue(tempRes);
+        this.calculateResult(value, "subtract");
+        return this;
     }
 
     /**
@@ -120,11 +117,8 @@ export class RomanNumber {
      */
 
     public multiply(value: number | string) {
-        const tempRes = this.calculateResult(value, "multiply");
-
-        this.checkResult(tempRes);
-
-        this.setValue(tempRes);
+        this.calculateResult(value, "multiply");
+        return this;
     }
 
     /**
@@ -133,11 +127,7 @@ export class RomanNumber {
      */
 
     public divide(value: number | string) {
-        const tempRes = this.calculateResult(value, "divide");
-
-        this.checkResult(tempRes);
-        if (tempRes % 1 !== 0) throw new Error("The result of the operation is not an integer");
-
-        this.setValue(tempRes);
+        this.calculateResult(value, "divide");
+        return this;
     }
 }
