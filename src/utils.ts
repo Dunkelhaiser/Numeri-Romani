@@ -16,6 +16,12 @@ const arabicRoman: ArabicRoman[] = [
 ];
 
 /**
+ * List of roman numerals.
+ */
+
+export const romanNumerals = ["I", "IV", "V", "IX", "X", "L", "XC", "C", "CD", "D", "CM", "M"];
+
+/**
  * Converts an arabic number to a roman number.
  *
  * @param num The integer arabic number to convert.
