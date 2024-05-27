@@ -54,37 +54,51 @@ export class RomanNumber {
         }
     }
 
+    private checkResult(value: number) {
+        if (value > 3999) {
+            throw new Error("The result of the operation exceeds 3999");
+        }
+        if (value < 1) {
+            throw new Error("The result of the operation is less than 1");
+        }
+    }
+
+    private calculateResult(value: number | string, operation: "add" | "subtract" | "multiply" | "divide"): number {
+        let tempRes: number;
+        let numericValue: number;
+
+        if (typeof value === "number") {
+            if (!Number.isInteger(value)) throw new Error("The value must be an integer");
+            numericValue = value;
+        } else {
+            isValidRoman(value);
+            numericValue = arabicize(value);
+        }
+
+        if (operation === "add") {
+            tempRes = this.numericValue + numericValue;
+        } else if (operation === "subtract") {
+            tempRes = this.numericValue - numericValue;
+        } else if (operation === "multiply") {
+            tempRes = this.numericValue * numericValue;
+        } else {
+            tempRes = this.numericValue / numericValue;
+        }
+
+        return tempRes;
+    }
+
     /**
      * Adds a value to the RomanNumber instance.
      * @param value The value to add. Can be either a arabic number or a roman numeral string.
      */
 
     public add(value: number | string) {
-        if (typeof value === "number") {
-            if (!Number.isInteger(value)) throw new Error("The value must be an integer");
-            const tempSum = this.numericValue + value;
-            if (tempSum > 3999) {
-                throw new Error("The sum of the two values exceeds 3999");
-            }
-            if (tempSum < 1) {
-                throw new Error("The sum of the two values is less than 1");
-            }
+        const tempRes = this.calculateResult(value, "add");
 
-            this.numericValue = tempSum;
-            this.value = romanize(tempSum);
-        } else {
-            isValidRoman(value);
-            const tempSum = this.numericValue + arabicize(value);
-            if (tempSum > 3999) {
-                throw new Error("The sum of the two values exceeds 3999");
-            }
-            if (tempSum < 1) {
-                throw new Error("The sum of the two values is less than 1");
-            }
+        this.checkResult(tempRes);
 
-            this.numericValue = tempSum;
-            this.value = romanize(tempSum);
-        }
+        this.setValue(tempRes);
     }
 
     /**
@@ -93,31 +107,11 @@ export class RomanNumber {
      */
 
     public subtract(value: number | string) {
-        if (typeof value === "number") {
-            if (!Number.isInteger(value)) throw new Error("The value must be an integer");
-            const tempDiff = this.numericValue - value;
-            if (tempDiff > 3999) {
-                throw new Error("The difference of the two values exceeds 3999");
-            }
-            if (tempDiff < 1) {
-                throw new Error("The difference of the two values is less than 1");
-            }
+        const tempRes = this.calculateResult(value, "subtract");
 
-            this.numericValue = tempDiff;
-            this.value = romanize(tempDiff);
-        } else {
-            isValidRoman(value);
-            const tempDiff = this.numericValue - arabicize(value);
-            if (tempDiff > 3999) {
-                throw new Error("The difference of the two values exceeds 3999");
-            }
-            if (tempDiff < 1) {
-                throw new Error("The difference of the two values is less than 1");
-            }
+        this.checkResult(tempRes);
 
-            this.numericValue = tempDiff;
-            this.value = romanize(tempDiff);
-        }
+        this.setValue(tempRes);
     }
 
     /**
@@ -126,31 +120,11 @@ export class RomanNumber {
      */
 
     public multiply(value: number | string) {
-        if (typeof value === "number") {
-            if (!Number.isInteger(value)) throw new Error("The value must be an integer");
-            const tempDiff = this.numericValue * value;
-            if (tempDiff > 3999) {
-                throw new Error("The product of the two values exceeds 3999");
-            }
-            if (tempDiff < 1) {
-                throw new Error("The product of the two values is less than 1");
-            }
+        const tempRes = this.calculateResult(value, "multiply");
 
-            this.numericValue = tempDiff;
-            this.value = romanize(tempDiff);
-        } else {
-            isValidRoman(value);
-            const tempDiff = this.numericValue * arabicize(value);
-            if (tempDiff > 3999) {
-                throw new Error("The product of the two values exceeds 3999");
-            }
-            if (tempDiff < 1) {
-                throw new Error("The product of the two values is less than 1");
-            }
+        this.checkResult(tempRes);
 
-            this.numericValue = tempDiff;
-            this.value = romanize(tempDiff);
-        }
+        this.setValue(tempRes);
     }
 
     /**
@@ -159,32 +133,11 @@ export class RomanNumber {
      */
 
     public divide(value: number | string) {
-        if (typeof value === "number") {
-            if (!Number.isInteger(value)) throw new Error("The value must be an integer");
-            const tempDiff = this.numericValue / value;
-            if (tempDiff > 3999) {
-                throw new Error("The quotient of the two values exceeds 3999");
-            }
-            if (tempDiff < 1) {
-                throw new Error("The quotient of the two values is less than 1");
-            }
-            if (tempDiff % 1 !== 0) throw new Error("The quotient of the two values is not an integer");
+        const tempRes = this.calculateResult(value, "divide");
 
-            this.numericValue = tempDiff;
-            this.value = romanize(tempDiff);
-        } else {
-            isValidRoman(value);
-            const tempDiff = this.numericValue / arabicize(value);
-            if (tempDiff > 3999) {
-                throw new Error("The quotient of the two values exceeds 3999");
-            }
-            if (tempDiff < 1) {
-                throw new Error("The quotient of the two values is less than 1");
-            }
-            if (tempDiff % 1 !== 0) throw new Error("The quotient of the two values is not an integer");
+        this.checkResult(tempRes);
+        if (tempRes % 1 !== 0) throw new Error("The result of the operation is not an integer");
 
-            this.numericValue = tempDiff;
-            this.value = romanize(tempDiff);
-        }
+        this.setValue(tempRes);
     }
 }

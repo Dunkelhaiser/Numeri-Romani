@@ -42,12 +42,12 @@ describe("RomanNumber class", () => {
 
         it("throws an error if the result is greater than 3999", () => {
             const romanNumber = new RomanNumber(3998);
-            expect(() => romanNumber.add(2)).toThrowError("The sum of the two values exceeds 3999");
+            expect(() => romanNumber.add(2)).toThrowError("The result of the operation exceeds 3999");
         });
 
         it("throws an error if the result is less than 1", () => {
             const romanNumber = new RomanNumber(1);
-            expect(() => romanNumber.add(-2)).toThrowError("The sum of the two values is less than 1");
+            expect(() => romanNumber.add(-2)).toThrowError("The result of the operation is less than 1");
         });
     });
 
@@ -68,12 +68,12 @@ describe("RomanNumber class", () => {
 
         it("throws an error if the result is greater than 3999", () => {
             const romanNumber = new RomanNumber(3998);
-            expect(() => romanNumber.subtract(-2)).toThrowError("The difference of the two values exceeds 3999");
+            expect(() => romanNumber.subtract(-2)).toThrowError("The result of the operation exceeds 3999");
         });
 
         it("throws an error if the result is less than 1", () => {
             const romanNumber = new RomanNumber(1);
-            expect(() => romanNumber.subtract(2)).toThrowError("The difference of the two values is less than 1");
+            expect(() => romanNumber.subtract(2)).toThrowError("The result of the operation is less than 1");
         });
     });
 
@@ -94,12 +94,12 @@ describe("RomanNumber class", () => {
 
         it("throws an error if the result is greater than 3999", () => {
             const romanNumber = new RomanNumber(3998);
-            expect(() => romanNumber.multiply(2)).toThrowError("The product of the two values exceeds 3999");
+            expect(() => romanNumber.multiply(2)).toThrowError("The result of the operation exceeds 3999");
         });
 
         it("throws an error if the result is less than 1", () => {
             const romanNumber = new RomanNumber(1);
-            expect(() => romanNumber.multiply(-1)).toThrowError("The product of the two values is less than 1");
+            expect(() => romanNumber.multiply(-1)).toThrowError("The result of the operation is less than 1");
         });
     });
 
@@ -120,12 +120,12 @@ describe("RomanNumber class", () => {
 
         it("throws an error if the result is less than 1", () => {
             const romanNumber = new RomanNumber(1);
-            expect(() => romanNumber.divide(-1)).toThrowError("The quotient of the two values is less than 1");
+            expect(() => romanNumber.divide(-1)).toThrowError("The result of the operation is less than 1");
         });
 
         it("throws an error if the result is not an integer", () => {
             const romanNumber = new RomanNumber(5);
-            expect(() => romanNumber.divide(2)).toThrowError("The quotient of the two values is not an integer");
+            expect(() => romanNumber.divide(2)).toThrowError("The result of the operation is not an integer");
         });
     });
 });
