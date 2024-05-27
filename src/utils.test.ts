@@ -19,6 +19,7 @@ describe("roman numbers", () => {
         [54, "LIV"],
         [100, "C"],
         [379, "CCCLXXIX"],
+        [400, "CD"],
         [500, "D"],
         [984, "CMLXXXIV"],
         [1000, "M"],
