@@ -2,7 +2,7 @@ import { it, expect, describe } from "vitest";
 import { arabicize, isValidRoman, romanize, type ArabicRoman } from "./utils";
 
 describe("roman numbers", () => {
-    const tests = [
+    const tests: ArabicRoman[] = [
         [1, "I"],
         [3, "III"],
         [4, "IV"],
@@ -25,7 +25,7 @@ describe("roman numbers", () => {
         [984, "CMLXXXIV"],
         [1000, "M"],
         [3999, "MMMCMXCIX"],
-    ] satisfies ArabicRoman[];
+    ];
 
     describe("converts arabic numbers to roman", () => {
         it.each(tests)("returns right roman number", (arabicNum, romanNum) => {

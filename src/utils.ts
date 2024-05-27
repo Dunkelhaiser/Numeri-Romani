@@ -1,6 +1,6 @@
 export type ArabicRoman = [number, string];
 
-const arabicRoman = [
+const arabicRoman: ArabicRoman[] = [
     [1000, "M"],
     [900, "CM"],
     [500, "D"],
@@ -13,7 +13,7 @@ const arabicRoman = [
     [5, "V"],
     [4, "IV"],
     [1, "I"],
-] satisfies ArabicRoman[];
+];
 
 /**
  * Converts an arabic number to a roman number.
