@@ -20,7 +20,7 @@ const arabicRoman: ArabicRoman[] = [
  * List of roman numerals.
  */
 
-export const romanNumerals = ["I", "IV", "V", "IX", "X", "L", "XC", "C", "CD", "D", "CM", "M"];
+export const romanNumerals = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
 
 /**
  * Converts an arabic number to a roman number.
