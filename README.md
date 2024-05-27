@@ -6,6 +6,7 @@ JavaScript library for work with Roman numbers.
 
 - TypeScript and JSDoc support
 - Conversion between Roman and Arabic numbers
+- RomanNumber class
 - Ability to perform basic mathematical operations
 
 ## Installation
@@ -24,6 +25,117 @@ pnpm add @dunkelhaiser/numeri-romani
 
 ```sh
 bun add @dunkelhaiser/numeri-romani
+```
+
+## Basic usage
+
+### Importing the Library
+
+#### Using ESM
+
+```ts
+import { RomanNumber, romanNumerals, romanize, romanizeSafe, arabicize, arabicizeSafe, isValidRoman, isValidRomanSafe, isValidArabic, isValidArabicSafe } from "@dunkelhaiser/numeri-romani";
+```
+
+#### Using CommonJS
+
+```ts
+const { RomanNumber, romanNumerals, romanize, romanizeSafe, arabicize, arabicizeSafe, isValidRoman, isValidRomanSafe, isValidArabic, isValidArabicSafe } = require("@dunkelhaiser/numeri-romani");
+```
+
+### Number conversion
+
+#### Convert to Roman number
+
+```ts
+romanize(379); // => "CCCLXXIX"
+```
+
+#### Convert to Arabic number
+
+```ts
+arabicize("LIV"); // => 54
+```
+
+With the default implementation of these functions, if conversion fails, a corresponding error will be thrown explaining the reason for the failure. Default functions use `isValidRoman` and `isValidArabic`, so errors will be the same as theirs.
+If you don't want to handle errors, you can use *safe* implementations of these functions `romanizeSafe` or `arabicizeSafe` which on fail will return "" or NaN correspondingly.
+
+### Validity check
+
+#### Check the validity of the Roman number
+
+To check if a string is a valid Roman number you can use `isValidRoman` or `isValidRomanSafe`.
+
+```ts
+isValidRoman("LIV"); // => true
+isValidRoman("IIV"); // => Error: Invalid roman number
+```
+
+```ts
+isValidRomanSafe("LIV"); // => true
+isValidRomanSafe("IIV"); // => false
+```
+
+#### Check the validity of the Arabic number
+
+To check if an Arabic number can be converted into a Roman number you can use `isValidArabic` or `isValidArabicSafe`.
+
+```ts
+isValidArabic("LIV"); // => true
+isValidArabic(5.5); // => Error: Cannot convert non-integer number
+isValidArabic(0); // => Error: Cannot convert zero
+isValidArabic(-2); // => Error: Cannot convert negative numbers
+isValidArabic(-4567); // => Error: Cannot convert numbers greater than 3999
+```
+
+```ts
+isValidArabicSafe(14); // => true
+isValidArabicSafe(5.5); // => false
+isValidArabicSafe("14"); // => false
+```
+
+### RomanNumber class
+
+RomanNumber class provides an ability to create RomanNumber an object that will contain Roman and Arabic numeral values. Also, this object provides arithmetic operations methods.
+
+#### Initialization
+
+```ts
+const romanNumber = new RomanNumber(7);
+const romanNumber = new RomanNumber("VII"); // same result
+```
+
+#### Arithmetic operations
+
+Arithmetic operations will update Roman and Arabic values of an instantiated object and return it, so it can be reassigned or method chained.
+
+All methods support Arabic and Roman numbers as an argument.
+The Roman number must correspond to the `isValidRoman` function. Arabic number can be any integer value.
+
+The results of operations must correspond to the `isValidRoman` function or an error will be thrown.
+
+##### Addition
+
+```ts
+romanNumber.add(4).add("IV");
+```
+
+##### Subtraction
+
+```ts
+romanNumber.substract(4).subtract("IV");
+```
+
+##### Multiplication
+
+```ts
+romanNumber.multiply(4).multiply("IV");
+```
+
+##### Division
+
+```ts
+romanNumber.divide(4).divide("IV");
 ```
 
 ## Contributing
