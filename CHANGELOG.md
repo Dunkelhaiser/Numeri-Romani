@@ -1,5 +1,11 @@
 # @dunkelhaiser/numeri-romani
 
+## 1.0.2
+
+### Patch Changes
+
+-   Updated docs on getting values
+
 ## 1.0.1
 
 ### Patch Changes

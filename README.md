@@ -105,6 +105,14 @@ const romanNumber = new RomanNumber(7);
 const romanNumber = new RomanNumber("VII"); // same result
 ```
 
+##### Get values
+
+```ts
+romanNumber.getValue(); // "VII"
+romanNumber.getNumericValue(); // 7
+romanNumber.getValues(); // { roman: 'VII', arabic: 7 }
+```
+
 #### Arithmetic operations
 
 Arithmetic operations will update Roman and Arabic values of an instantiated object and return it, so it can be reassigned or method chained.
