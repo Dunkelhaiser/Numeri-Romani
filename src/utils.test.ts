@@ -15,6 +15,7 @@ describe("roman numbers", () => {
         [16, "XVI"],
         [20, "XX"],
         [29, "XXIX"],
+        [40, "XL"],
         [50, "L"],
         [54, "LIV"],
         [90, "XC"],
