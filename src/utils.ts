@@ -19,7 +19,7 @@ const arabicRoman = [
  * Converts an arabic number to a roman number.
  *
  * @param num The integer arabic number to convert.
- * @throws Error if the number is not an integer or is negative.
+ * @throws Error if the number is not an integer, is negative, or is larger than 3999.
  * @returns The roman number.
  */
 
@@ -27,6 +27,7 @@ export const romanize = (num: number) => {
     if (!Number.isInteger(num)) throw new Error("Cannot convert non-integer number");
     if (num === 0) throw new Error("Cannot convert zero");
     if (num < 1) throw new Error("Cannot convert negative numbers");
+    if (num > 3999) throw new Error("Cannot convert numbers greater than 3999");
 
     let arabicNum = num;
     let romanNum = "";
@@ -73,5 +74,5 @@ export const arabicize = (num: string) => {
  */
 
 export const isValidRoman = (num: string) => {
-    return /^\bM*(?<temp1>CM|CD|D?C{0,3})(?<temp2>XC|XL|L?X{0,3})(?<temp3>IX|IV|V?I{0,3})\b$/.test(num);
+    return /^\bM{0,3}(?<temp1>CM|CD|D?C{0,3})(?<temp2>XC|XL|L?X{0,3})(?<temp3>IX|IV|V?I{0,3})\b$/.test(num);
 };

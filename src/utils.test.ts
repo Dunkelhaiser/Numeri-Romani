@@ -24,7 +24,7 @@ describe("roman numbers", () => {
         [500, "D"],
         [984, "CMLXXXIV"],
         [1000, "M"],
-        [7964, "MMMMMMMCMLXIV"],
+        [3999, "MMMCMXCIX"],
     ] satisfies ArabicRoman[];
 
     describe("converts arabic numbers to roman", () => {
@@ -44,6 +44,10 @@ describe("roman numbers", () => {
         it("throws error for negative numbers", () => {
             expect(() => romanize(-1)).toThrow("Cannot convert negative numbers");
         });
+
+        it("throws error for numbers larger than 3999", () => {
+            expect(() => romanize(4000)).toThrow("Cannot convert numbers greater than 3999");
+        });
     });
 
     describe("converts roman numbers to arabic", () => {
@@ -62,7 +66,7 @@ describe("roman numbers", () => {
         const validInvalid = [
             ["X", true],
             ["VII", true],
-            ["MMMMMMMCMLXIV", true],
+            ["MMMCMXCIX", true],
             ["IIII", false],
             ["efs", false],
             ["XXIXX", false],
