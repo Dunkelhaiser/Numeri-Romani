@@ -34,7 +34,7 @@ describe("roman numbers", () => {
         });
 
         it("throws error for non-integer numbers", () => {
-            expect(() => romanize(1.5)).toThrow("Non-integer number");
+            expect(() => romanize(1.5)).toThrow("Cannot convert non-integer number");
         });
 
         it("throws error for zero", () => {

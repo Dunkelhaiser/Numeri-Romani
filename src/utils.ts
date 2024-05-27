@@ -24,7 +24,7 @@ const arabicRoman = [
  */
 
 export const romanize = (num: number) => {
-    if (!Number.isInteger(num)) throw new Error("Non-integer number");
+    if (!Number.isInteger(num)) throw new Error("Cannot convert non-integer number");
     if (num === 0) throw new Error("Cannot convert zero");
     if (num < 1) throw new Error("Cannot convert negative numbers");
 
