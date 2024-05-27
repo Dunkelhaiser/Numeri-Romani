@@ -57,15 +57,15 @@ describe("RomanNumber class", () => {
             });
         });
 
-        describe("substract", () => {
-            it("substracts a roman number to the RomanNumber instance", () => {
+        describe("subtract", () => {
+            it("subtracts a roman number to the RomanNumber instance", () => {
                 const romanNumber = new RomanNumber(10);
                 romanNumber.subtract("II");
                 expect(romanNumber.getNumericValue()).toBe(8);
                 expect(romanNumber.getValue()).toBe("VIII");
             });
 
-            it("substracts a arabic number to the RomanNumber instance", () => {
+            it("subtracts a arabic number to the RomanNumber instance", () => {
                 const romanNumber = new RomanNumber(5);
                 romanNumber.subtract(-2);
                 expect(romanNumber.getNumericValue()).toBe(7);
