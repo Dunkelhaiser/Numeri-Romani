@@ -50,4 +50,30 @@ describe("RomanNumber class", () => {
             expect(() => romanNumber.add(-2)).toThrowError("The sum of the two values is less than 1");
         });
     });
+
+    describe("substract", () => {
+        it("substracts a roman number to the RomanNumber instance", () => {
+            const romanNumber = new RomanNumber(10);
+            romanNumber.subtract("II");
+            expect(romanNumber.getNumericValue()).toBe(8);
+            expect(romanNumber.getValue()).toBe("VIII");
+        });
+
+        it("substracts a arabic number to the RomanNumber instance", () => {
+            const romanNumber = new RomanNumber(5);
+            romanNumber.subtract(-2);
+            expect(romanNumber.getNumericValue()).toBe(7);
+            expect(romanNumber.getValue()).toBe("VII");
+        });
+
+        it("throws an error if the result is greater than 3999", () => {
+            const romanNumber = new RomanNumber(3998);
+            expect(() => romanNumber.subtract(-2)).toThrowError("The difference of the two values exceeds 3999");
+        });
+
+        it("throws an error if the result is less than 1", () => {
+            const romanNumber = new RomanNumber(1);
+            expect(() => romanNumber.subtract(2)).toThrowError("The difference of the two values is less than 1");
+        });
+    });
 });
