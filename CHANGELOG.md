@@ -1,5 +1,11 @@
 # @dunkelhaiser/numeri-romani
 
+## 1.0.3
+
+### Patch Changes
+
+-   Updated docs for setValue
+
 ## 1.0.2
 
 ### Patch Changes

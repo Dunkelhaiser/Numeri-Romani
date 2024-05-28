@@ -101,16 +101,23 @@ RomanNumber class provides an ability to create RomanNumber an object that will 
 #### Initialization
 
 ```ts
-const romanNumber = new RomanNumber(7);
-const romanNumber = new RomanNumber("VII"); // same result
+const romanNumber = new RomanNumber(7); // { roman: "VII", arabic: 7 }
+const romanNumber = new RomanNumber("VII"); // { roman: "VII, arabic: 7 }
 ```
 
 ##### Get values
 
 ```ts
-romanNumber.getValue(); // "VII"
-romanNumber.getNumericValue(); // 7
-romanNumber.getValues(); // { roman: 'VII', arabic: 7 }
+romanNumber.getValue(); // => "VII"
+romanNumber.getNumericValue(); // => 7
+romanNumber.getValues(); // => { roman: "VII", arabic: 7 }
+```
+
+#### Set value
+
+```ts
+romanNumber.setValue(9); // { roman: "IX", arabic: 9 }
+romanNumber.setValue("IX"); // { roman: "IX", arabic: 9 }
 ```
 
 #### Arithmetic operations

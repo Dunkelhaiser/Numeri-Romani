@@ -1,6 +1,6 @@
 {
     "name": "@dunkelhaiser/numeri-romani",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Library for work with Roman numbers.",
     "private": false,
     "keywords": [
